@@ -4,7 +4,6 @@ import { useContext } from 'react';
 import CountryContext from '../context/countryContext';
 
 const RenderCountryCard = function ({ countryData }) {
-  console.log(countryData);
   const { darkMode } = useContext(CountryContext);
 
   const renderedButtons = countryData?.borders?.map((border) => {
