@@ -1,0 +1,14 @@
+.search-filter-block {
+  background-color: $very-light-gray;
+  position: relative;
+  padding: 40px 60px 15px;
+
+  @include flex-row-center;
+  justify-content: space-between;
+  transition: background-color 0.3 ease-in-out;
+}
+
+.search-filter-block-dark {
+  @include dark-mode-elements;
+  background-color: $very-dark-blue;
+}

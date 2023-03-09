@@ -1,0 +1,40 @@
+.search-bar {
+  position: relative;
+
+  :first-child {
+    color: $dark-gray;
+    position: absolute;
+    left: 20px;
+    top: 25%;
+    font-size: larger;
+  }
+
+  input {
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 15px 20px 15px 50px;
+    width: 22rem;
+    border: none;
+    background-color: $white;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover,
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.search-bar-dark {
+  :first-child {
+    color: $white;
+  }
+
+  input {
+    @include dark-mode-elements;
+
+    &::placeholder {
+      color: $white;
+    }
+  }
+}

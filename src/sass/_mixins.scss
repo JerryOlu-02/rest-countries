@@ -1,0 +1,14 @@
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-row-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin dark-mode-elements {
+  background-color: $dark-blue;
+  color: $white;
+}

@@ -1,0 +1,14 @@
+.country-list {
+  background-color: $very-light-gray;
+  padding: 40px 60px;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  transition: background-color 0.3 ease-in-out;
+}
+
+.country-list-dark {
+  @include dark-mode-elements;
+  background-color: $very-dark-blue;
+}

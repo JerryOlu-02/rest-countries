@@ -1,0 +1,90 @@
+.filter-card {
+  @include flex-col;
+  width: 12rem;
+  gap: 5px;
+  color: $very-dark;
+
+  position: absolute;
+  right: 60px;
+  top: 40px;
+
+  .filter-list {
+    background-color: $white;
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    font-size: small;
+    @include flex-col;
+    font-weight: 600;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition-property: transform background-color;
+    transition: 0.3s ease-in-out;
+    z-index: 10;
+
+    .region-option {
+      padding: 10px 20px;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $dark-blue;
+        color: $white;
+      }
+    }
+
+    .region-option:first-of-type {
+      border-radius: 5px 5px 0 0;
+    }
+
+    .region-option:last-of-type {
+      border-radius: 0 0 5px 5px;
+    }
+
+    .region-option-active {
+      background-color: $dark-blue;
+      color: $white;
+    }
+  }
+
+  .filter-list-active {
+    transform: scaleY(1);
+  }
+}
+
+.filter-card > p {
+  background-color: $white;
+  border-radius: 5px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  width: 100%;
+  @include flex-row-center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  font-weight: 600;
+  font-size: small;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.filter-card-dark {
+  .filter-list {
+    @include dark-mode-elements;
+
+    .region-option {
+      &:hover {
+        background-color: $white;
+        color: $very-dark;
+      }
+    }
+
+    .region-option-active {
+      background-color: $white;
+      color: $very-dark;
+    }
+  }
+}
+
+.filter-card-dark > p {
+  @include dark-mode-elements;
+}

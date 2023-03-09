@@ -1,0 +1,118 @@
+.rendered-country-card {
+  background-color: $very-light-gray;
+  padding: 60px;
+  padding-bottom: 200px;
+  @include flex-col;
+  align-items: flex-start;
+  gap: 60px;
+  transition: background-color 0.3s ease-in-out;
+
+  .back-btn {
+    border: none;
+    border-radius: 5px;
+    background-color: $white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    min-height: 2rem;
+    width: 7rem;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      width: 100%;
+      height: 100%;
+      color: $very-dark;
+      text-decoration: none;
+    }
+  }
+}
+
+.rendered-country-card-div {
+  @include flex-row-center;
+  width: 100%;
+  gap: 100px;
+
+  .rendered-country-card-img {
+    width: 40%;
+    height: 22rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+    img {
+      width: 100%;
+      height: 22rem;
+    }
+  }
+}
+
+.rendered-country-card-right {
+  @include flex-col;
+  gap: 10px;
+  width: 60%;
+  line-height: 2;
+  color: $very-dark;
+
+  span {
+    font-weight: 600;
+  }
+
+  .rendered-country-card-content {
+    display: flex;
+    gap: 80px;
+    font-size: small;
+  }
+
+  .border-countries {
+    padding-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: small;
+
+    span {
+      font-weight: 600;
+    }
+
+    button {
+      font-size: smaller;
+      width: 5rem;
+      height: 1.5rem;
+      background-color: $white;
+      border: none;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      border-radius: 2px;
+      transition: background-color 0.3s ease-in-out;
+    }
+  }
+}
+
+// DARK MODE
+.rendered-country-card-dark {
+  background-color: $very-dark-blue;
+
+  .back-btn {
+    @include dark-mode-elements;
+
+    a {
+      color: $white;
+    }
+  }
+
+  .rendered-country-card-right {
+    color: $white;
+  }
+
+  .border-countries {
+    button {
+      @include dark-mode-elements;
+      font-weight: lighter;
+    }
+  }
+}
