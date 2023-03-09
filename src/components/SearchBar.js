@@ -19,7 +19,7 @@ const SearchBar = function () {
   const darkClass = darkMode ? 'search-bar-dark' : '';
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="search-bar-form" onSubmit={handleSubmit}>
       <div className={`search-bar ${darkClass}`}>
         <AiOutlineSearch />
         <input

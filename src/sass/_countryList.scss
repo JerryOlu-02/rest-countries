@@ -3,12 +3,21 @@
   padding: 40px 60px;
   position: relative;
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   gap: 60px;
   transition: background-color 0.3 ease-in-out;
+  @include media-padding;
 }
 
 .country-list-dark {
   @include dark-mode-elements;
   background-color: $very-dark-blue;
+}
+
+@media (max-width: 655px) {
+  .country-list {
+    flex-direction: column;
+    flex-wrap: unset;
+  }
 }

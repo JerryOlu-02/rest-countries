@@ -1,11 +1,10 @@
-import axios from 'axios';
 import { createContext, useCallback, useState } from 'react';
+import { AxiosCall } from '../helpers/AxiosCall';
 
 const CountryContext = createContext();
 
 const CountryProvider = function ({ children }) {
   const [allCountries, setAllCountries] = useState([]);
-  const [countryCodeData, setCountryCodeData] = useState([]);
   const [isShowing, setIsShowing] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
@@ -18,14 +17,9 @@ const CountryProvider = function ({ children }) {
       // Render Spinner
       setIsShowing(true);
 
-      const response = await axios.get(`https://restcountries.com/v3.1/all`);
+      const data = await AxiosCall('all');
 
-      if (response.statusText === 'OK') {
-        // Remove Spinner
-        setIsShowing(false);
-      }
-
-      const data = await response.data;
+      data ? setIsShowing(false) : setIsShowing(true);
 
       const countriesInitial = [
         'Germany',
@@ -52,15 +46,10 @@ const CountryProvider = function ({ children }) {
   const getCountriesByRegion = async function (region) {
     try {
       setIsShowing(true);
-      const response = await axios.get(
-        `https://restcountries.com/v3.1/region/${region}`
-      );
 
-      if (response.statusText === 'OK') {
-        setIsShowing(false);
-      }
+      const data = await AxiosCall(`region/${region}`);
 
-      const data = await response.data;
+      data ? setIsShowing(false) : setIsShowing(true);
 
       setAllCountries([...data]);
     } catch (error) {
@@ -72,15 +61,10 @@ const CountryProvider = function ({ children }) {
   const getCountryBySearch = async function (country) {
     try {
       setIsShowing(true);
-      const response = await axios.get(
-        `https://restcountries.com/v3.1/name/${country}`
-      );
 
-      if (response.statusText === 'OK') {
-        setIsShowing(false);
-      }
+      const data = await AxiosCall(`name/${country}`);
 
-      const data = await response.data;
+      data ? setIsShowing(false) : setIsShowing(true);
 
       setAllCountries([...data]);
     } catch (error) {
@@ -89,34 +73,14 @@ const CountryProvider = function ({ children }) {
     }
   };
 
-  const getCountryByCode = useCallback(async function (code) {
-    try {
-      setIsShowing(true);
-      const response = await axios.get(
-        `https://restcountries.com/v3.1/alpha/${code}`
-      );
-
-      if (response.statusText === 'OK') {
-        setIsShowing(false);
-      }
-
-      setCountryCodeData([...response.data]);
-    } catch (error) {
-      console.error(error.message);
-      setIsShowing(true);
-    }
-  }, []);
-
   const sharedData = {
     getCountries,
     getCountriesByRegion,
     getCountryBySearch,
     toggleDarkMode,
-    getCountryByCode,
     darkMode,
     allCountries,
     isShowing,
-    countryCodeData,
   };
 
   return (

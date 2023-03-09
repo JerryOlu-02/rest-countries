@@ -5,14 +5,16 @@ import SearchFilterBlock from '../components/SearchFilterBlock';
 import CountryList from '../components/CountryList';
 
 const Homepage = function () {
-  const { getCountries, allCountries } = useContext(CountryContext);
+  const { getCountries, allCountries, darkMode } = useContext(CountryContext);
 
   useEffect(() => {
     getCountries();
   }, [getCountries]);
 
+  const darkClass = darkMode ? 'app-dark' : '';
+
   return (
-    <div className="app">
+    <div className={`app ${darkClass}`}>
       <NavBar />
       <SearchFilterBlock />
       <CountryList countries={allCountries} />

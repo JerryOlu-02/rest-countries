@@ -54,3 +54,17 @@
     color: $white;
   }
 }
+
+@media (max-width: 655px) {
+  .country-card {
+    width: 100%;
+
+    img {
+      height: 9rem;
+    }
+
+    .country-card-div {
+      height: 11rem;
+    }
+  }
+}

@@ -67,7 +67,7 @@ const RenderCountryCard = function ({ countryData }) {
 
           <div className="border-countries">
             <span>Border Countries: </span>
-            {renderedButtons}
+            <div>{renderedButtons}</div>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 .search-filter-block {
+  @include media-padding;
   background-color: $very-light-gray;
   position: relative;
   padding: 40px 60px 15px;
@@ -11,4 +12,13 @@
 .search-filter-block-dark {
   @include dark-mode-elements;
   background-color: $very-dark-blue;
+}
+
+@media (max-width: 850px) {
+  .search-filter-block {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 20px;
+    padding-bottom: 100px;
+  }
 }

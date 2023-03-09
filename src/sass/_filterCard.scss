@@ -67,6 +67,7 @@
   }
 }
 
+// DARK MODE
 .filter-card-dark {
   .filter-list {
     @include dark-mode-elements;
@@ -87,4 +88,11 @@
 
 .filter-card-dark > p {
   @include dark-mode-elements;
+}
+
+@media (max-width: 850px) {
+  .filter-card {
+    left: 5%;
+    top: 100px;
+  }
 }

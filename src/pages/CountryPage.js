@@ -1,22 +1,22 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import RenderCountryCard from '../components/RenderCountryCard';
 import Spinner from '../components/Spinner';
+import CountryContext from '../context/countryContext';
+import { AxiosCall } from '../helpers/AxiosCall';
 
 const CountryPage = function () {
   const { countryId } = useParams();
+  const { darkMode } = useContext(CountryContext);
   const [countryData, setCountryData] = useState(null);
 
   useEffect(() => {
     const getCountryByCode = async function () {
       try {
-        const response = await axios.get(
-          `https://restcountries.com/v3.1/alpha/${countryId}`
-        );
+        const responseData = await AxiosCall(`alpha/${countryId}`);
 
-        setCountryData([...response.data]);
+        setCountryData([...responseData]);
       } catch (error) {
         console.error(error.message);
       }
@@ -25,8 +25,10 @@ const CountryPage = function () {
     getCountryByCode();
   }, [countryId]);
 
+  const darkClass = darkMode ? 'app-dark' : '';
+
   return (
-    <div className="app">
+    <div className={`app ${darkClass}`}>
       <NavBar />
       {countryData ? (
         <RenderCountryCard countryData={countryData[0]} />

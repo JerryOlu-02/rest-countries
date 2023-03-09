@@ -12,3 +12,10 @@
   background-color: $dark-blue;
   color: $white;
 }
+
+@mixin media-padding {
+  @media (max-width: 850px) {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}

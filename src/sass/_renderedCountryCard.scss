@@ -3,6 +3,7 @@
   padding: 60px;
   padding-bottom: 200px;
   @include flex-col;
+  @include media-padding;
   align-items: flex-start;
   gap: 60px;
   transition: background-color 0.3s ease-in-out;
@@ -72,23 +73,28 @@
   .border-countries {
     padding-top: 40px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    gap: 20px;
     font-size: small;
 
     span {
       font-weight: 600;
     }
 
-    button {
-      font-size: smaller;
-      width: 5rem;
-      height: 1.5rem;
-      background-color: $white;
-      border: none;
-      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-      border-radius: 2px;
-      transition: background-color 0.3s ease-in-out;
+    div {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+
+      button {
+        font-size: smaller;
+        width: 5rem;
+        height: 1.5rem;
+        background-color: $white;
+        border: none;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        border-radius: 2px;
+        transition: background-color 0.3s ease-in-out;
+      }
     }
   }
 }
@@ -113,6 +119,36 @@
     button {
       @include dark-mode-elements;
       font-weight: lighter;
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .rendered-country-card {
+    padding: 30px 5% 10%;
+  }
+
+  .rendered-country-card-div {
+    flex-direction: column;
+    gap: 60px;
+
+    .rendered-country-card-img {
+      width: 100%;
+    }
+  }
+
+  .rendered-country-card-right {
+    width: 100%;
+
+    .rendered-country-card-content {
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .border-countries {
+      padding-top: 25px;
+      flex-direction: column;
+      gap: 10px;
     }
   }
 }
