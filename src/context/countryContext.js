@@ -21,22 +21,22 @@ const CountryProvider = function ({ children }) {
 
       data ? setIsShowing(false) : setIsShowing(true);
 
-      const countriesInitial = [
-        'Germany',
-        'United States',
-        'Brazil',
-        'Iceland',
-        'Afghanistan',
-        'Åland Islands',
-        'Albania',
-        'Algeria',
-      ];
+      // const countriesInitial = [
+      //   'Germany',
+      //   'United States',
+      //   'Brazil',
+      //   'Iceland',
+      //   'Afghanistan',
+      //   'Åland Islands',
+      //   'Albania',
+      //   'Algeria',
+      // ];
 
-      const filteredData = data.filter((country) => {
-        return countriesInitial.includes(country.name.common);
-      });
+      // const filteredData = data.filter((country) => {
+      //   return countriesInitial.includes(country.name.common);
+      // });
 
-      setAllCountries([...filteredData]);
+      setAllCountries([...data]);
     } catch (error) {
       setIsShowing(true);
       console.error(error.message);

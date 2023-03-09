@@ -116,9 +116,11 @@
   }
 
   .border-countries {
-    button {
-      @include dark-mode-elements;
-      font-weight: lighter;
+    div {
+      button {
+        @include dark-mode-elements;
+        font-weight: lighter;
+      }
     }
   }
 }
