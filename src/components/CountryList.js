@@ -1,19 +1,40 @@
-import { useContext, useState } from 'react';
+import { useContext, useReducer } from 'react';
 import CountryContext from '../context/countryContext';
 import CountryCard from './CountryCard';
 import Pagination from './Pagination';
 import Spinner from './Spinner';
 
+const reducer = function (state, action) {
+  switch (action.type) {
+    case 'paginate':
+      return {
+        ...state,
+        currentPage: action.payload,
+      };
+    case 'set-current-page-to-1':
+      return {
+        ...state,
+        currentPage: 1,
+      };
+
+    default:
+      return state;
+  }
+};
+
 const CountryList = function ({ countries }) {
   const { isShowing, darkMode } = useContext(CountryContext);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [countryPerPage] = useState(9);
+  const [state, dispatch] = useReducer(reducer, {
+    countryPerPage: 8,
+    currentPage: 1,
+  });
+  console.log(state);
 
   const darkClass = darkMode ? 'country-list-dark' : '';
 
-  const indexOfLastCountry = currentPage * countryPerPage;
-  const indexOfFirstCountry = indexOfLastCountry - countryPerPage;
+  const indexOfLastCountry = state.currentPage * state.countryPerPage;
+  const indexOfFirstCountry = indexOfLastCountry - state.countryPerPage;
 
   // Paginated Countries
   const currentCountries = countries.slice(
@@ -22,7 +43,10 @@ const CountryList = function ({ countries }) {
   );
 
   const paginate = function (number) {
-    setCurrentPage(number);
+    dispatch({
+      type: 'paginate',
+      payload: number,
+    });
   };
 
   const renderedCountries = currentCountries.map((country) => {
@@ -37,7 +61,7 @@ const CountryList = function ({ countries }) {
       </div>
 
       <Pagination
-        countryPerPage={countryPerPage}
+        countryPerPage={state.countryPerPage}
         totalCountries={countries.length}
         paginate={paginate}
         darkMode={darkMode}
