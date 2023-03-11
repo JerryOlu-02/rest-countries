@@ -29,7 +29,6 @@ const CountryList = function ({ countries }) {
     countryPerPage: 8,
     currentPage: 1,
   });
-  console.log(state);
 
   const darkClass = darkMode ? 'country-list-dark' : '';
 
